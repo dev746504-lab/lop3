@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: "Quicksand", "Baloo 2", system-ui, sans-serif;
+  background: linear-gradient(160deg, #eef6ff 0%, #fff7e8 100%);
+  overflow-x: hidden;
+}
+
+.font-display {
+  font-family: "Baloo 2", "Quicksand", system-ui, sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #c9c9f7;
+  border-radius: 999px;
+}
+
+button {
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.text-stroke {
+  -webkit-text-stroke: 2px rgba(0, 0, 0, 0.15);
+}
