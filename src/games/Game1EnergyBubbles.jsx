@@ -197,7 +197,7 @@ export default function Game1EnergyBubbles() {
               left: `${b.left}%`,
               animationDuration: `${b.duration}s`,
             }}
-            className={`absolute top-0 animate-float-down w-24 sm:w-32 md:w-36 px-2 py-3 rounded-full text-center font-display font-bold text-[11px] sm:text-sm shadow-lg border-4 active:scale-90 transition-transform z-10 ${
+            className={`absolute top-0 animate-float-down w-28 sm:w-36 md:w-40 px-2 py-3 rounded-full text-center font-display font-bold text-sm sm:text-base shadow-lg border-4 active:scale-90 transition-transform z-10 ${
               b.type === "positive"
                 ? "bg-gradient-to-br from-confidence-yellow to-confidence-green text-slate-800 border-white"
                 : "bg-gradient-to-br from-slate-500 to-slate-700 text-white border-slate-300"

@@ -153,7 +153,7 @@ export default function Game4ConfidenceTree() {
                 {bloom ? "🌸" : "🌱"}
               </span>
               {bloom && bloom.name && (
-                <span className="mt-1 bg-white/95 text-confidence-purple font-display font-bold text-[10px] sm:text-xs px-2 py-0.5 rounded-full shadow whitespace-nowrap max-w-[90px] truncate">
+                <span className="mt-1 bg-white/95 text-confidence-purple font-display font-bold text-xs sm:text-sm px-2 py-0.5 rounded-full shadow whitespace-nowrap max-w-[110px] truncate">
                   {bloom.name}
                 </span>
               )}
