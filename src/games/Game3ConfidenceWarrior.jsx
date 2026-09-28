@@ -2,6 +2,16 @@ import React, { useState } from "react";
 import { CheckCircle2, XCircle, RotateCcw, X } from "lucide-react";
 import soundEffects from "../lib/soundEffects.js";
 import { burstConfetti } from "../lib/confettiEffects.js";
+import HelpButton from "../components/HelpButton.jsx";
+
+const HELP_STEPS = [
+  "Đọc tình huống hiển thị bên phải màn hình (hoặc phía dưới trên điện thoại).",
+  "Chọn đáp án đúng nhất trong 3 lựa chọn để thể hiện cách rèn luyện sự tự tin phù hợp.",
+  "Trả lời đúng sẽ mở khóa 1 món trang bị cho nhân vật bên trái và tự động chuyển sang mốc tiếp theo.",
+  "Nếu chọn sai, hãy đọc lại tình huống và thử lại - không giới hạn số lần chọn.",
+  "Hoàn thành đủ 6 mốc để nhân vật trở thành Chiến binh Tự tin và mở màn hình chiến thắng.",
+  "Ở màn hình chiến thắng, cô giáo bấm lần lượt 3 nút khẩu hiệu để cả lớp cùng đọc to.",
+];
 
 const STAGES = [
   {
@@ -200,6 +210,7 @@ export default function Game3ConfidenceWarrior() {
 
   return (
     <div className="max-w-[1400px] mx-auto px-3 sm:px-6 py-5 sm:py-8">
+      <HelpButton title="Cách chơi: Nâng cấp chiến binh tự tin" steps={HELP_STEPS} />
       <div className="text-center mb-5 sm:mb-6">
         <h2 className="font-display font-extrabold text-xl sm:text-3xl md:text-4xl text-confidence-purple mb-1">
           🛡️ NÂNG CẤP CHIẾN BINH TỰ TIN

@@ -40,8 +40,8 @@ export default {
           "50%": { transform: "rotate(3deg)" },
         },
         "float-down": {
-          "0%": { transform: "translateY(-10vh)" },
-          "100%": { transform: "translateY(110vh)" },
+          "0%": { transform: "translate(-50%, -10vh)" },
+          "100%": { transform: "translate(-50%, 110vh)" },
         },
         "pop": {
           "0%": { transform: "scale(0.6)", opacity: "0" },

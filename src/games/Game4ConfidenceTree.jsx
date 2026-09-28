@@ -2,6 +2,16 @@ import React, { useState } from "react";
 import { Plus, Quote, X, HeartHandshake } from "lucide-react";
 import soundEffects from "../lib/soundEffects.js";
 import { smallConfetti } from "../lib/confettiEffects.js";
+import HelpButton from "../components/HelpButton.jsx";
+
+const HELP_STEPS = [
+  "Chạm vào một nụ hoa 🌱 bất kỳ trên cây.",
+  "Đọc to câu hỏi/thử thách hiện ra và mời một bạn học sinh xung phong chia sẻ trước lớp.",
+  "(Không bắt buộc) Nhập tên bạn học sinh vừa chia sẻ vào ô nhập liệu.",
+  "Bấm \"Nở hoa & Vỗ tay\" để chúc mừng - nụ hoa sẽ nở thành bông hoa rực rỡ kèm tên bạn.",
+  "Bấm \"+ Thêm nụ hoa\" nếu có thêm học sinh muốn xung phong chia sẻ.",
+  "Bấm \"Thông điệp tổng kết bài học\" để cả lớp cùng đọc câu nói kết thúc bài.",
+];
 
 const QUESTIONS = [
   "Hãy kể 1 điểm mạnh hoặc điều em tự hào về bản thân",
@@ -102,6 +112,7 @@ export default function Game4ConfidenceTree() {
 
   return (
     <div className="max-w-[1400px] mx-auto px-3 sm:px-6 py-5 sm:py-8">
+      <HelpButton title="Cách chơi: Cây tự tin nở hoa" steps={HELP_STEPS} />
       <div className="text-center mb-4 sm:mb-6">
         <h2 className="font-display font-extrabold text-xl sm:text-3xl md:text-4xl text-confidence-purple mb-1">
           🌳 CÂY TỰ TIN NỞ HOA

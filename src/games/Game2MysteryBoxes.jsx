@@ -2,6 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import { Gift, Check, TimerReset, PartyPopper, RotateCcw } from "lucide-react";
 import soundEffects from "../lib/soundEffects.js";
 import { burstConfetti } from "../lib/confettiEffects.js";
+import HelpButton from "../components/HelpButton.jsx";
+
+const HELP_STEPS = [
+  "Chạm vào một hộp quà bất kỳ trong 6 hộp đang lắc lư.",
+  "Đọc to thử thách hành động tự tin hiện ra trong hộp cho cả lớp nghe.",
+  "Bấm \"Bắt đầu đếm\" để đếm ngược 10 giây và thực hiện thử thách, hoặc bấm \"Hoàn thành sớm\" nếu đã làm xong.",
+  "Hộp quà sẽ được đánh dấu đã mở. Tiếp tục mở các hộp còn lại cho đến khi hết cả 6 hộp!",
+];
 
 const BOXES = [
   { id: 1, challenge: "Cười thật tươi và vẫy tay chào các bạn xung quanh!" },
@@ -88,6 +96,7 @@ export default function Game2MysteryBoxes() {
 
   return (
     <div className="max-w-[1400px] mx-auto px-3 sm:px-6 py-5 sm:py-8">
+      <HelpButton title="Cách chơi: Hộp quà bí mật" steps={HELP_STEPS} />
       <div className="text-center mb-6 sm:mb-8">
         <h2 className="font-display font-extrabold text-xl sm:text-3xl md:text-4xl text-confidence-purple mb-1">
           🎁 HỘP QUÀ BÍ MẬT - BẮT CHƯỚC THẦN THÁI

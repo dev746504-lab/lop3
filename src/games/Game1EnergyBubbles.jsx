@@ -2,6 +2,14 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { PlayCircle, RotateCcw, Zap } from "lucide-react";
 import soundEffects from "../lib/soundEffects.js";
 import { burstConfetti, smallConfetti } from "../lib/confettiEffects.js";
+import HelpButton from "../components/HelpButton.jsx";
+
+const HELP_STEPS = [
+  "Bấm nút \"Bắt đầu\" để các bong bóng bắt đầu rơi xuống màn hình.",
+  "Chạm vào bong bóng vàng/xanh có mặt cười 😊 để được +20% năng lượng và khủng long sẽ nhảy lên vui mừng.",
+  "Tránh chạm vào đám mây đen có mặt khóc 😢 vì sẽ bị -10% năng lượng.",
+  "Cố gắng đưa thanh năng lượng lên 100% để khủng long nhảy múa ăn mừng và mở khóa lời dẫn vào bài học!",
+];
 
 const POSITIVE_TEXTS = [
   "Tin tưởng vào bản thân",
@@ -21,6 +29,7 @@ export default function Game1EnergyBubbles() {
   const [bubbles, setBubbles] = useState([]);
   const [jumpTick, setJumpTick] = useState(0);
   const [toast, setToast] = useState(null);
+  const [dinoLeft, setDinoLeft] = useState(50);
   const gameAreaRef = useRef(null);
   const spawnTimerRef = useRef(null);
   const toastTimerRef = useRef(null);
@@ -49,7 +58,7 @@ export default function Game1EnergyBubbles() {
         id: ++bubbleUid,
         type: isPositive ? "positive" : "negative",
         text,
-        left: 6 + Math.random() * 82,
+        left: 10 + Math.random() * 80,
         duration: 6.5 + Math.random() * 2.5,
       };
       return [...prev, bubble];
@@ -62,6 +71,7 @@ export default function Game1EnergyBubbles() {
     setWon(false);
     setEnergy(0);
     setBubbles([]);
+    setDinoLeft(50);
     clearSpawnTimer();
     spawnTimerRef.current = setInterval(spawnBubble, 1000);
   };
@@ -74,6 +84,7 @@ export default function Game1EnergyBubbles() {
     setEnergy(0);
     setBubbles([]);
     setToast(null);
+    setDinoLeft(50);
   };
 
   const showToast = (message) => {
@@ -84,6 +95,7 @@ export default function Game1EnergyBubbles() {
 
   const popBubble = (bubble, e) => {
     setBubbles((prev) => prev.filter((b) => b.id !== bubble.id));
+    setDinoLeft(Math.min(92, Math.max(8, bubble.left)));
 
     if (bubble.type === "positive") {
       soundEffects.correct();
@@ -120,6 +132,7 @@ export default function Game1EnergyBubbles() {
 
   return (
     <div className="max-w-[1400px] mx-auto px-3 sm:px-6 py-5 sm:py-8">
+      <HelpButton title="Cách chơi: Nạp năng lượng tự tin" steps={HELP_STEPS} />
       <div className="text-center mb-4 sm:mb-6">
         <h2 className="font-display font-extrabold text-xl sm:text-3xl md:text-4xl text-confidence-purple mb-1">
           🦖 NẠP NĂNG LƯỢNG TỰ TIN
@@ -210,10 +223,12 @@ export default function Game1EnergyBubbles() {
 
         {/* dino */}
         <div
-          key={jumpTick}
-          className="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 text-7xl sm:text-9xl select-none pointer-events-none animate-bounce-slow"
+          style={{ left: `${dinoLeft}%` }}
+          className="absolute bottom-2 sm:bottom-4 -translate-x-1/2 select-none pointer-events-none transition-[left] duration-500 ease-out"
         >
-          🦖
+          <span key={jumpTick} className="block text-7xl sm:text-9xl animate-bounce-slow">
+            🦖
+          </span>
         </div>
       </div>
 
